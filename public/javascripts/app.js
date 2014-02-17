@@ -22,12 +22,12 @@ function on_load()
             $('.mainMenuItem').each(function()
             {
                 var currMMI = $(this);
-                var currMLB = currMMI.find('.mainLineBox');
-                var currMOLB = currMMI.find('.mainOpenLineBox');
 
                 if(currMMI.hasClass("clicked"))
                 {
                     var currSML = getSubmenuListClass(currMMI);
+                    var currMLB = currMMI.find('.mainLineBox');
+                    var currMOLB = currMMI.find('.mainOpenLineBox');
                     currMMI.removeClass("clicked");
                     if (currSML.length !== 0)
                     {
