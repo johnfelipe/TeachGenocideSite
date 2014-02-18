@@ -35,6 +35,18 @@ function on_load()
                         currMOLB.hide();
                         currMLB.show();
                     }
+
+                    $('.subMenuItem').each(function()
+                    {
+                        var currSMI = $(this);
+                        var currSMT = currSMI.find('.subMenuText');
+
+                        if(currSMI.hasClass("clicked"))
+                        {
+                            currSMI.removeClass("clicked");
+                            hlTextToggle(false, currSMT);
+                        }
+                    });                    
                 }
             });
 
@@ -46,9 +58,53 @@ function on_load()
             }
         }
     });
+
+    $('.subMenuItem').click(function()
+    {
+        var currSMI = $(this);
+        var currSMT = currSMI.find('.subMenuText');
+
+        if(currSMI.hasClass("clicked"))
+        {
+            currSMI.removeClass("clicked");
+            hlTextToggle(false, currSMT);
+        }
+        else
+        {
+            $('.subMenuItem').each(function()
+            {
+                var currSMI = $(this);
+                var currSMT = currSMI.find('.subMenuText');
+
+                if(currSMI.hasClass("clicked"))
+                {
+                    currSMI.removeClass("clicked");
+                    hlTextToggle(false, currSMT);
+                }
+            });
+
+            currSMI.addClass("clicked");
+            hlTextToggle(true, currSMT);
+        }
+    });
 }
 
 function getSubmenuListClass(mainMenuItemClass)
 {
     return $('.' + 'sub' + $(mainMenuItemClass).attr("class").split(/\s+/)[1]);
+}
+
+function hlTextToggle(highlight, textSpan)
+{
+    if(highlight)
+    {
+        textSpan.html("~&nbsp;&nbsp;" + textSpan.html() + "&nbsp;&nbsp;~");
+        textSpan.css("font-weight", "700");
+    }
+    else
+    {
+        textSpan.html(textSpan.html().replace("&nbsp;&nbsp;~", "")
+                                    .replace("~&nbsp;&nbsp;", ""));
+        textSpan.css("font-weight", "500");        
+    }
 }
