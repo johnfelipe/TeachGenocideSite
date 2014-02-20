@@ -176,6 +176,16 @@ ul, li
 }
 
 
+#selector
+{
+    position: relative;
+    height: 40px;
+    width: 1px;
+    background-color: #000000;
+    left: 300px;
+    top: 0;
+}
+
 
 
 

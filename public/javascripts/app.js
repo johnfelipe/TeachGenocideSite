@@ -16,6 +16,10 @@ function on_load()
                 currMLB.show();
                 currMOLB.hide();
             }
+
+            // move selector
+            topL = currMMI.offset().top;
+            $('#selector').animate({ top: topL}, 200);
         }
         else
         {
@@ -56,6 +60,10 @@ function on_load()
                 currMLB.hide();
                 currSML.slideDown(300);
             }
+
+            // move selector
+            topL = currMMI.offset().top;
+            $('#selector').animate({ top: topL}, 200);
         }
     });
 
@@ -85,6 +93,10 @@ function on_load()
 
             currSMI.addClass("clicked");
             hlTextToggle(true, currSMT);
+
+            //move selector
+            topL = currSMI.offset().top;
+            $('#selector').animate({ top: topL}, 200);
         }
     });
 }
@@ -98,13 +110,13 @@ function hlTextToggle(highlight, textSpan)
 {
     if(highlight)
     {
-        textSpan.html("~&nbsp;&nbsp;" + textSpan.html() + "&nbsp;&nbsp;~");
+        //textSpan.html("~&nbsp;&nbsp;" + textSpan.html() + "&nbsp;&nbsp;~");
         textSpan.css("font-weight", "700");
     }
     else
     {
-        textSpan.html(textSpan.html().replace("&nbsp;&nbsp;~", "")
-                                    .replace("~&nbsp;&nbsp;", ""));
+        //textSpan.html(textSpan.html().replace("&nbsp;&nbsp;~", "")
+        //                            .replace("~&nbsp;&nbsp;", ""));
         textSpan.css("font-weight", "500");        
     }
 }
