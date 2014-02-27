@@ -17,9 +17,10 @@ function on_load()
                 currMOLB.hide();
             }
 
-            // move selector
+            // move selectorArrow
             topL = currMMI.offset().top;
-            $('#selector').animate({ top: topL}, 200);
+            $('.selectorArrow').animate({ top: topL}, 200);
+            $('.selector').animate({ top: topL}, 200);
         }
         else
         {
@@ -61,9 +62,10 @@ function on_load()
                 currSML.slideDown(300);
             }
 
-            // move selector
+            // move selectorArrow
             topL = currMMI.offset().top;
-            $('#selector').animate({ top: topL}, 200);
+            $('.selectorArrow').animate({ top: topL}, 200);
+            $('.selector').animate({ top: topL}, 200);
         }
     });
 
@@ -94,10 +96,23 @@ function on_load()
             currSMI.addClass("clicked");
             hlTextToggle(true, currSMT);
 
-            //move selector
+            //move selectorArrow
             topL = currSMI.offset().top;
-            $('#selector').animate({ top: topL}, 200);
+            $('.selectorArrow').animate({ top: topL}, 200);
+            $('.selector').animate({ top: topL}, 200);
         }
+    });
+
+    $('.selectorArrow').click(function()
+    {
+        $(this).removeClass('selectorArrow');
+        $(this).addClass('selector');
+    });
+
+    $('.selector').click(function()
+    {
+        $(this).removeClass('selector');
+        $(this).addClass('selectorArrow');
     });
 }
 
@@ -120,3 +135,5 @@ function hlTextToggle(highlight, textSpan)
         textSpan.css("font-weight", "500");        
     }
 }
+
+
