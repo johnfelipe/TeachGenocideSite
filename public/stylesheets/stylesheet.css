@@ -175,8 +175,7 @@ ul, li
     transform: rotate(-36deg);
 }
 
-
-.selector
+.selectorLine
 {
     position: relative;
     height: 35px;

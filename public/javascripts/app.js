@@ -19,8 +19,7 @@ function on_load()
 
             // move selectorArrow
             topL = currMMI.offset().top;
-            $('.selectorArrow').animate({ top: topL}, 200);
-            $('.selector').animate({ top: topL}, 200);
+            $('#selector').animate({ top: topL}, 200);
         }
         else
         {
@@ -64,8 +63,7 @@ function on_load()
 
             // move selectorArrow
             topL = currMMI.offset().top;
-            $('.selectorArrow').animate({ top: topL}, 200);
-            $('.selector').animate({ top: topL}, 200);
+            $('#selector').animate({ top: topL}, 200);
         }
     });
 
@@ -98,21 +96,26 @@ function on_load()
 
             //move selectorArrow
             topL = currSMI.offset().top;
-            $('.selectorArrow').animate({ top: topL}, 200);
-            $('.selector').animate({ top: topL}, 200);
+            $('#selector').animate({ top: topL}, 200);
         }
     });
 
-    $('.selectorArrow').click(function()
+    $('#logo').click(function()
     {
-        $(this).removeClass('selectorArrow');
-        $(this).addClass('selector');
-    });
-
-    $('.selector').click(function()
-    {
-        $(this).removeClass('selector');
-        $(this).addClass('selectorArrow');
+        selector = $('#selector');
+        
+        if(selector.hasClass('selectorLine'))
+        {
+            console.log("hasline");
+            selector.addClass("selectorArrow");
+            selector.removeClass("selectorLine");   
+        }
+        else if(selector.hasClass('selectorArrow'))
+        {
+            console.log("nothasline");
+            selector.removeClass("selectorArrow");
+            selector.addClass("selectorLine");
+        }   
     });
 }
 
