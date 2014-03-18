@@ -1,5 +1,6 @@
 function on_load()
 {
+    var selectorIndent = 9;
     $('.mainMenuItem').click(function()
     {
         var currMMI = $(this);
@@ -18,21 +19,24 @@ function on_load()
             }
 
             // move selectorArrow
-            topL = currMMI.offset().top;
+            topL = currMMI.offset().top + selectorIndent;
             $('#selector').animate({ top: topL}, 200);
         }
-        else
+        else // if the MMI was not clicked
         {
-            $('.mainMenuItem').each(function()
+            var prevSMLheight = 0;
+            var prevSMLisAbove = false; 
+            $('.mainMenuItem').each(function() // close all other MMI
             {
-                var currMMI = $(this);
-
-                if(currMMI.hasClass("clicked"))
+                var iterMMI = $(this);
+                if(iterMMI.hasClass("clicked"))
                 {
-                    var currSML = getSubmenuListClass(currMMI);
-                    var currMLB = currMMI.find('.mainLineBox');
-                    var currMOLB = currMMI.find('.mainOpenLineBox');
-                    currMMI.removeClass("clicked");
+                    var currSML = getSubmenuListClass(iterMMI);
+                    var currMLB = iterMMI.find('.mainLineBox');
+                    var currMOLB = iterMMI.find('.mainOpenLineBox');
+                    iterMMI.removeClass("clicked");
+                    prevSMLheight = currSML.height();
+
                     if (currSML.length !== 0)
                     {
                         currSML.slideUp(300);
@@ -50,7 +54,10 @@ function on_load()
                             currSMI.removeClass("clicked");
                             hlTextToggle(false, currSMT);
                         }
-                    });                    
+                    });
+
+                    if(iterMMI.index() < currMMI.index())
+                        prevSMLisAbove = true;        
                 }
             });
 
@@ -62,7 +69,11 @@ function on_load()
             }
 
             // move selectorArrow
-            topL = currMMI.offset().top;
+            if(prevSMLisAbove)
+                topL = currMMI.offset().top - prevSMLheight + selectorIndent;
+            else
+                topL = currMMI.offset().top + selectorIndent;
+
             $('#selector').animate({ top: topL}, 200);
         }
     });
@@ -95,27 +106,9 @@ function on_load()
             hlTextToggle(true, currSMT);
 
             //move selectorArrow
-            topL = currSMI.offset().top;
+            topL = currSMI.offset().top + selectorIndent;
             $('#selector').animate({ top: topL}, 200);
         }
-    });
-
-    $('#logo').click(function()
-    {
-        selector = $('#selector');
-        
-        if(selector.hasClass('selectorLine'))
-        {
-            console.log("hasline");
-            selector.addClass("selectorArrow");
-            selector.removeClass("selectorLine");   
-        }
-        else if(selector.hasClass('selectorArrow'))
-        {
-            console.log("nothasline");
-            selector.removeClass("selectorArrow");
-            selector.addClass("selectorLine");
-        }   
     });
 }
 

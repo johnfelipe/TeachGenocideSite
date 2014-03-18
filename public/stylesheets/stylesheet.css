@@ -175,23 +175,13 @@ ul, li
     transform: rotate(-36deg);
 }
 
-.selectorLine
-{
-    position: relative;
-    height: 35px;
-    width: 1px;
-    background-color: #000000;
-    left: 300px;
-    top: 0;
-}
-
 .selectorArrow
 {
     position: relative;
-    left: 300px;
+    left: 290px;
     width: 0;
     height: 0;
-    border-left: 10px solid #f1da0e;
+    border-right: 10px solid #ffffff;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
 }
