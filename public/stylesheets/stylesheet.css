@@ -48,14 +48,12 @@ ul, li
 .mainMenuItem
 {
     position: relative;
-    height: 40px;
     cursor:pointer
 }
 
 .subMenuitem
 {
     position: relative;
-    height: 40px;
     cursor: pointer;
 }
 

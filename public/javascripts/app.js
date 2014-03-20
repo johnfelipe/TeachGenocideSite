@@ -1,6 +1,9 @@
 function on_load()
 {
     var selectorIndent = 9;
+    $('.mainMenuItem').height(600/getMaxMenuItemCount());
+    $('.subMenuItem').height(600/getMaxMenuItemCount());
+
     $('.mainMenuItem').click(function()
     {
         var currMMI = $(this);
@@ -130,6 +133,19 @@ function hlTextToggle(highlight, textSpan)
         //                            .replace("~&nbsp;&nbsp;", ""));
         textSpan.css("font-weight", "500");        
     }
+}
+
+function getMaxMenuItemCount()
+{
+    var count = 0;
+    var subMenuLenghts = new Array();
+    $('.mainMenuItem').each(function()
+    {
+        count++;
+        subMenuLenghts.push(getSubmenuListClass($(this)).children().length);
+    });
+    count += Math.max.apply(Math, subMenuLenghts);
+    return count;
 }
 
 
