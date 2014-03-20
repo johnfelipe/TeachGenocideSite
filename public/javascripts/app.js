@@ -1,8 +1,9 @@
 function on_load()
 {
-    var selectorIndent = 9;
-    $('.mainMenuItem').height(600/getMaxMenuItemCount());
-    $('.subMenuItem').height(600/getMaxMenuItemCount());
+    var menuItemHeight = $('.mainMenuList').height()/getMaxMenuItemCount();
+    $('.mainMenuItem').height(menuItemHeight);
+    $('.subMenuItem').height(menuItemHeight);
+    selectorIndent = (menuItemHeight-10)/4; // 10 is the height of the arrow
 
     $('.mainMenuItem').click(function()
     {
