@@ -48,14 +48,12 @@ ul, li
 .mainMenuItem
 {
     position: relative;
-    height: 40px;
     cursor:pointer
 }
 
 .subMenuitem
 {
     position: relative;
-    height: 40px;
     cursor: pointer;
 }
 
@@ -85,7 +83,7 @@ ul, li
 
     display:inline-block; 
     position: relative;
-    top: 40%; 
+    top: 37%; 
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
 
@@ -175,6 +173,16 @@ ul, li
     transform: rotate(-36deg);
 }
 
+.selectorArrow
+{
+    position: relative;
+    left: 290px;
+    width: 0;
+    height: 0;
+    border-right: 10px solid #ffffff;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
 
 
 
